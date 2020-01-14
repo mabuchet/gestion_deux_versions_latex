@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Gestion des deux versions : %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Permet d'afficher du texte sélectivement en fonction de la version 'sujet'
+% ou de la version 'corrigé'
+% Dans préambule doit figurer l'un des deux choix suivants :
+%\version{sujet}
+%\version{corrige}
+% tout autre choix donnera la question et la réponse en même temps
+
+\usepackage{ifthen}
+\newcommand{\versionString}{ }
+\newcommand{\versionUn}{sujet}
+\newcommand{\versionDeux}{corrige}
+\newcommand{\lesDeux}{sujetEtCorrige}
+\newcommand{\version}[1]{\renewcommand{\versionString}{#1}}
+
+\newcommand{\selonVersion}[2]{% #1=texte version 1,#2=texte version 2
+\ifthenelse{\equal{\versionString}{\versionUn}}{#1}{}
+\ifthenelse{\equal{\versionString}{\versionDeux}}{#2}{}
+\ifthenelse{\equal{\versionString}{\lesDeux}}{%
+#1
+
+#2
+}{}%
+}
+
+\newcommand{\versionSujet}[1]{
+\ifthenelse{\equal{\versionString}{\versionUn}}{#1}{}
+\ifthenelse{\equal{\versionString}{\lesDeux}}{#1}{}
+}
+
+\newcommand{\versionCorrige}[1]{
+\ifthenelse{\equal{\versionString}{\versionDeux}}{#1}{}
+\ifthenelse{\equal{\versionString}{\lesDeux}}{#1}{}
+}

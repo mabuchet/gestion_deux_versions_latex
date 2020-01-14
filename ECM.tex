@@ -1,0 +1,21 @@
+\documentclass[a4paper,11pt]{book}
+
+\usepackage{gestion_deux_versions}
+
+%\version{sujet}
+%\version{corrige}
+\version{sujetEtCorrige}
+
+\begin{document}
+
+\selonVersion{
+Ceci est la version sujet.
+}{
+Tandis que ceci est dans la version corrig\'e.
+}
+
+\versionSujet{Ceci n'appara\^itra que dans la version sujet.}
+
+\versionCorrige{Ceci n'appara\^itra que dans la version corrig\'e.}
+
+\end{document}
